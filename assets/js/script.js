@@ -6,14 +6,15 @@ let hoursArray = [9,10,11,12,13,14,15,16,17];
 let currHour = parseInt(moment().format('H'));
 
 function addTimes() {   //adds rows to container
-    let schedule = JSON.parse(localStorage.getItem("schedule"));
-    if(schedule === null) {
+    let schedule = JSON.parse(localStorage.getItem("schedule"));    //pull from storage
+    if(schedule === null) { //if empty initialize
         schedule = [];
         for(let i=0; i<hoursArray.length; i++) {
             let event = {hour: hoursArray[i], event: ""};
             schedule.push(event);
         }
     }
+
     for(let i=0; i<hoursArray.length; i++) {
         let rowEl = $(`<div>`).addClass(`row`); //new row
 
@@ -36,9 +37,7 @@ function addTimes() {   //adds rows to container
         else if(hoursArray[i] > currHour) {
             textAreaEl.addClass(`future`);
         }
-        if(schedule !== null) {     //if there are locally stored events, set the val
-            textAreaEl.val(schedule[i].event);
-        }
+        textAreaEl.val(schedule[i].event);  //set textArea to whats in localStorage (doesnt miss because of earlier check)
 
         let buttonEl = $(`<button>`).addClass(`col-1 btn save-button saveBtn`); //create button
         let saveIcon = $(`<i>`).addClass(`fas fa-save`);
@@ -47,7 +46,7 @@ function addTimes() {   //adds rows to container
             saveEvent(i,textAreaEl.val());
         });
 
-        rowEl.append(timeEl);
+        rowEl.append(timeEl);   //append everything
         rowEl.append(textAreaEl);
         rowEl.append(buttonEl);
         hourContainer.append(rowEl);
@@ -59,16 +58,19 @@ function setDate() {
 }
 
 function saveEvent(hourIndex, details) {
-    let schedule = JSON.parse(localStorage.getItem("schedule"));
-    if(schedule === null) {
+    let schedule = JSON.parse(localStorage.getItem("schedule"));    //pull from storage
+
+    if(schedule === null) { //if empty, initialize
         schedule = [];
         for(let i=0; i<hoursArray.length; i++) {
             let event = {hour: hoursArray[i], event: ""};
             schedule.push(event);
         }
     }
-    schedule[hourIndex].event = details;
-    storageConfirmEl.css({'display': 'block'});
+
+    schedule[hourIndex].event = details;    //set details of event at inputted index hour
+
+    storageConfirmEl.css({'display': 'block'}); //set display then fade out
     storageConfirmEl.fadeOut(1200);
     localStorage.setItem("schedule", JSON.stringify(schedule));
 }
