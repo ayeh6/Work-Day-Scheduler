@@ -1,5 +1,4 @@
-# Project Name - change to the name of your project
-
+# Project Name - Work Day Scheduler
 ## Table of contents
 
 - [Overview](#overview)
@@ -50,8 +49,8 @@ THEN the saved events persist
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: https://github.com/ayeh6/Work-Day-Scheduler
+- Live Site URL: https://ayeh6.github.io/Work-Day-Scheduler/
 
 ## My process
 
