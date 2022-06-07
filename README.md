@@ -1,4 +1,4 @@
-# Project Name - Work Day Scheduler
+# Work Day Scheduler
 ## Table of contents
 
 - [Overview](#overview)
