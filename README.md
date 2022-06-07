@@ -16,33 +16,37 @@
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
 
-Description of the assignment should go here
+The challenge of this assignment is to make a work day scheduler that uses bootstrap for the UI elements, and localStorage for saving data on the page.
 
 ### User Story
 
-Add the user story here
+AS AN employee with a busy schedule
+I WANT to add important events to a daily planner
+SO THAT I can manage my time effectively
 
 ### Acceptance Criteria
 
-Add acceptance criteria here
+GIVEN I am using a daily planner to create a schedule
+WHEN I open the planner
+THEN the current day is displayed at the top of the calendar
+WHEN I scroll down
+THEN I am presented with time blocks for standard business hours
+WHEN I view the time blocks for that day
+THEN each time block is color-coded to indicate whether it is in the past, present, or future
+WHEN I click into a time block
+THEN I can enter an event
+WHEN I click the save button for that time block
+THEN the text for that event is saved in local storage
+WHEN I refresh the page
+THEN the saved events persist
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot.png)
 
 ### Links
 
@@ -53,53 +57,33 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Built with
 
-- Semantic HTML5 markup
+- HTML
 - CSS
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Javascript
+- jQuery
+- Bootstrap
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Biggest thing I learned in this assignment is how to use Bootstrap to style the elements. It was as simple as looking at documentation and then adding classes to certain elements, barely had to touch the css. I also got more experience with appending elements and having to add certain attributes and classes to them before appending. Though one thing I discovered which had me very confused was this snippet of code below:
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
+```js
+buttonEl.on('click',function() {
+  saveEvent(i,textAreaEl.val());
+});
 ```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-If you want more help with writing markdown, check out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Keep in mind this was in a for-loop that was creating different rows for the page. I was expecting the values of to be null/undefined or just give an error, but the values were true to what was needed for the function. Surprisingly the textAreaEl was able to grab the value of the textarea in the same row as the button, and the 'i' was the same value that it was when the for-loop was iterating. I'm assuming that jQuery is powerful enough to save the references of these values onto the on-click listener so when the button is clicked, it would search for the reference of that certain textAreaEl and grab the correct one. Taking advantage of this discovery, I made a function that passes the values in and saves the text input into localStorage.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+As for continued development, I wanted to have the program be able to be dynamic and adjust itself if say the array of hours is changed. For now because the hours are set, I am able to just one-to-one connect the index of the localStorage to the index of a certain hour. But if the hours were to change, there would need to be another function that can add the hours missing from localStorage and be able to transfer the data seemlessly. I tried to implement something like that, but realize the time-complexity of the algorithm in mind was O(n^2) which is not ideal. Maybe a sliding-window approach would be appropriate, checking the hours missing on each end and then inserting when localStorage starts and ends.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [MomentJS](https://momentjs.com/) - This helped me with setting the date on the top using their function, and also to find the current hour.
+- [w3schools](https://www.w3schools.com/) - Always a great resource for a beginning web developer, has a very useful jQuery examples.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Andrew Yeh](https://ayeh6.github.io/Yeh-Andrew-Portfolio-Website/)
+- LinkedIn - [/in/ayeh6](https://www.linkedin.com/in/ayeh6/)
