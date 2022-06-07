@@ -60,6 +60,7 @@ THEN the saved events persist
 - Javascript
 - jQuery
 - Bootstrap
+- MomentJS
 
 ### What I learned
 
