@@ -13,6 +13,15 @@ textarea{
   padding: 10px;
 }
 
+span{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#localStorageConfirm {
+  text-align: center;
+  display: none;
+}
+
 .jumbotron {
   text-align: center;
   background-color: transparent;
